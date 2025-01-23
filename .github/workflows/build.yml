@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - '*-*'  # All feature branches created from the project issues, e.g. 1-create-book
+      - '*-*'
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -27,13 +27,15 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+      - name: Set execute permissions for mvnw
+        run: chmod +x ./mvnw
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           ./mvnw --batch-mode --no-transfer-progress clean verify sonar:sonar \
-            -Dsonar.projectKey=AAU-ASE24W-group-E_cl-book-service
+            -Dsonar.projectKey=AAU-ASE24W-group-E_cl-rating-service
 
   build-docker-images:
     name: Build and push Docker images
