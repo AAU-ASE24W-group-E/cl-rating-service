@@ -9,7 +9,8 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Path("/ratings")
@@ -39,8 +40,12 @@ public class RatingResource {
 
     @GET
     @Path("/{username}")
-    public Response getAvgRating(@PathParam("username") String username){
+    public Response getRatingInfo(@PathParam("username") String username){
         double avgRating = ratingService.getAverageRatingForUsername(username);
-        return Response.ok(avgRating).build();
+        int numRatings = ratingService.getNumberOfRatingsForUsername(username);
+        Map<String, Object> response = new HashMap<>();
+        response.put("avgRating", avgRating);
+        response.put("numRatings", numRatings);
+        return Response.ok(response).build();
     }
 }
