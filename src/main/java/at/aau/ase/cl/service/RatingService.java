@@ -45,18 +45,20 @@ public class RatingService {
         return getAverageRating(ratings);
     }
 
+    public int getNumberOfRatingsForUsername(String username){
+        return getRatingsForUsername(username).size();
+    }
+
     private double getAverageRating(List<RatingEntity> ratingEntityList){
         if(ratingEntityList.isEmpty()){
             return 0;
         }
         double sum = 0;
-        int numValidRatings = 0;
         for(RatingEntity ratingEntity : ratingEntityList){
-            if(ratingEntity != null && ratingEntity.rating != null){
+            if(ratingEntity != null){
                 sum += ratingEntity.rating;
-                numValidRatings++;
             }
         }
-        return sum / numValidRatings;
+        return sum / ratingEntityList.size();
     }
 }
