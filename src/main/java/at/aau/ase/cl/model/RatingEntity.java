@@ -18,6 +18,6 @@ public class RatingEntity extends PanacheEntityBase {
     @Column(name = "rated_username", nullable = false, unique = true)
     public String rated_username;
 
-    @Column(name = "rating", nullable = true, unique = false)
+    @Column(name = "rating", nullable = false, unique = false)
     public Integer rating;
 }

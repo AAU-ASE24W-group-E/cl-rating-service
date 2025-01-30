@@ -21,10 +21,10 @@ public class Rating {
     @NotNull
     public String rated_username;
 
-    /* If users rate each other, it has to be at least
-    1 or at most 5 stars - if the rating is not done it can be null for now */
+    /* If users rate each other, it has to be at least 1 or at most 5 stars */
     @Min(1)
     @Max(5)
+    @NotNull
     public Integer rating; 
 
     public Rating() {
