@@ -12,11 +12,11 @@ public class RatingEntity extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public UUID id;
 
-    @Column(name = "reader_username", nullable = false, unique = true)
-    public String reader_username;
+    @Column(name = "rating_username", nullable = false, unique = true)
+    public String rating_username;
 
-    @Column(name = "owner_username", nullable = false, unique = true)
-    public String owner_username;
+    @Column(name = "rated_username", nullable = false, unique = true)
+    public String rated_username;
 
     @Column(name = "rating", nullable = true, unique = false)
     public Integer rating;

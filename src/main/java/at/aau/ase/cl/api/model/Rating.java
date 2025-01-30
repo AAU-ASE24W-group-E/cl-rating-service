@@ -10,13 +10,15 @@ import java.util.UUID;
 public class Rating {
     public UUID id;
 
+    /* Username of the user that gives a rating */
     @Size(min = 1, max = 255)
     @NotNull
-    public String owner_username;
+    public String rating_username;
 
+    /* Username of the user that receives a rating */
     @Size(min = 1, max = 255)
     @NotNull
-    public String reader_username;
+    public String rated_username;
 
     /* If users rate each other, it has to be at least
     1 or at most 5 stars - if the rating is not done it can be null for now */
@@ -27,9 +29,9 @@ public class Rating {
     public Rating() {
     }
 
-    public Rating(String owner_username, String reader_username, Integer rating ) {
-        this.owner_username = owner_username;
-        this.reader_username = reader_username;
+    public Rating(String rating_username, String rated_username, Integer rating ) {
+        this.rating_username = rating_username;
+        this.rated_username = rated_username;
         this.rating = rating;
     }
 }
