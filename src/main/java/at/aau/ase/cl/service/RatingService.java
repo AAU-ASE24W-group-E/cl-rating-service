@@ -7,6 +7,8 @@ import at.aau.ase.cl.mapper.RatingMapper;
 import at.aau.ase.cl.model.RatingEntity;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,6 +59,7 @@ public class RatingService {
                 sum += ratingEntity.rating;
             }
         }
-        return sum / ratingEntityList.size();
+        BigDecimal avg = new BigDecimal(sum / ratingEntityList.size()).setScale(1, RoundingMode.HALF_UP);
+        return avg.doubleValue();
     }
 }
