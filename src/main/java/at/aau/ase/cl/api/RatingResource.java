@@ -36,4 +36,11 @@ public class RatingResource {
         Rating rating = RatingMapper.INSTANCE.map(ratingEntity);
         return Response.ok(rating).build();
     }
+
+    @GET
+    @Path("/{username}")
+    public Response getAvgRating(@PathParam("username") String username){
+        double avgRating = ratingService.getAverageRatingForUsername(username);
+        return Response.ok(avgRating).build();
+    }
 }
