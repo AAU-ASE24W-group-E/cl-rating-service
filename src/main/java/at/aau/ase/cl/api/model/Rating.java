@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Max;
 import java.util.UUID;
 
 public class Rating {
+
     public UUID id;
 
     /* Username of the user that gives a rating */
@@ -32,6 +33,38 @@ public class Rating {
     public Rating(String rating_username, String rated_username, Integer rating ) {
         this.rating_username = rating_username;
         this.rated_username = rated_username;
+        this.rating = rating;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getRating_username() {
+        return rating_username;
+    }
+
+    public void setRating_username(String rating_username) {
+        this.rating_username = rating_username;
+    }
+
+    public String getRated_username() {
+        return rated_username;
+    }
+
+    public void setRated_username(String rated_username) {
+        this.rated_username = rated_username;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 }
