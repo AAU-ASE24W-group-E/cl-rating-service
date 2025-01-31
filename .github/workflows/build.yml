@@ -35,7 +35,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           ./mvnw --batch-mode --no-transfer-progress clean verify sonar:sonar \
-            -Dsonar.projectKey=AAU-ASE24W-group-E_cl-rating-service
+            -Dsonar.projectKey=AAU-ASE24W-group-E_cl-rating-service -X
 
   build-docker-images:
     name: Build and push Docker images
