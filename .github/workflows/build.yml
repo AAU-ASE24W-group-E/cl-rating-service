@@ -65,6 +65,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set execute permissions for mvnw
+        run: chmod +x ./mvnw
       - name: Build and push multi-arch image
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
